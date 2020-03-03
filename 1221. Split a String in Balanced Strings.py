@@ -1,42 +1,17 @@
-# Definition for singly-linked list.
-from typing import List
-
-
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
 class Solution:
-    """https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/submissions/"""
+    """https://leetcode.com/problems/split-a-string-in-balanced-strings/"""
 
-    def getDecimalValue(self, head: ListNode) -> int:
-        binaries = []
-        total = 0
-        ref = head
-        while ref:
-            binaries.append(ref.val)
-            ref = ref.next
-        binaries.reverse()
-        while binaries:
-            binary = binaries.pop()
-            exp = len(binaries)
-            total += binary * 2 ** exp
-        return total
-
-
-def get_head(arr: List[int]):
-    arr.reverse()
-    h = ListNode(arr.pop())
-    ref = h
-    while arr:
-        ref.next = ListNode(arr.pop())
-        ref = ref.next
-    return h
+    def balancedStringSplit(self, s: str) -> int:
+        count = 0
+        letter_map = {"L": 0, "R": 0}
+        for el in s:
+            letter_map[el] += 1
+            if letter_map["L"] == letter_map["R"]:
+                letter_map["L"] = letter_map["R"] = 0
+                count += 1
+        return count
 
 
 if __name__ == "__main__":
     s = Solution()
-    head = get_head([1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0])
-    print(s.getDecimalValue(head))
+    print(s.balancedStringSplit("RLRRRLLRLL"))
