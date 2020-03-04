@@ -1,12 +1,4 @@
 #!/bin/python3
-
-import math
-import os
-import random
-import re
-import sys
-
-
 def binary_search(arr, target):
     start = 0
     end = len(arr) - 1
