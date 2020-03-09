@@ -6,21 +6,15 @@ class Solution:
     https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/
     """
 
-    def replaceElements(self, arr: List[int]) -> List[int]:
-        if len(arr) == 1:
-            return [-1]
-
-        cache = [max(arr[1:])]
-
-        for i in range(1, len(arr)):
-            if i != len(arr) - 1:
-                if cache[i - 1] != arr[i]:
-                    cache.append(cache[i - 1])
-                else:
-                    cache.append(max(arr[i + 1 :]))
-            else:
-                cache.append(-1)
-        return cache
+    def replaceElements(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: List[int]
+        """
+        rmax, result = -1, [0] * len(arr)
+        for i in reversed(range(len(arr))):
+            result[i], rmax = rmax, max(rmax, arr[i])
+        return result
 
 
 if __name__ == "__main__":
