@@ -11,7 +11,7 @@ class Solution:
             next_point = points[i]
             diagonal_move = min(
                 (
-                    abs(next_point[0] - current[0],),
+                    abs(next_point[0] - current[0]),
                     abs(next_point[1] - current[1]),
                 )
             )
@@ -54,6 +54,6 @@ if __name__ == "__main__":
     s = Solution()
     print(
         s.minTimeToVisitAllPoints(
-            [[559, 511], [932, 618], [-623, -443], [431, 91], [838, -127],]
+            [[559, 511], [932, 618], [-623, -443], [431, 91], [838, -127]]
         )
     )
