@@ -3,6 +3,7 @@ from typing import List, Union
 
 class Solution:
     def findSpecialInteger(self, arr: List[int]) -> Union[int, None]:
+        """https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/submissions/"""
         count_map = {}
         arr_length = len(arr)
         for a in arr:
