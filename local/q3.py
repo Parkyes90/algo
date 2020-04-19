@@ -26,6 +26,24 @@ def solution(numbers, K):
     return -1
 
 
+def count_iter(n):
+    count = 0
+    index_list = (i for i in range(n))
+    swap_combs = list(combinations(index_list, 2))
+    for i in range(n):
+        combs = combinations(swap_combs, i)
+        for comb in combs:
+            for _, _ in comb:
+                count += 1
+    multiplier = 0
+    while count:
+        count //= n
+        multiplier += 1
+    return multiplier
+
+
 if __name__ == "__main__":
-    ans = solution([3], 3)
-    print(ans)
+    # ans = solution([3], 3)
+    # print(ans)
+    c = count_iter(8)
+    print(c)
