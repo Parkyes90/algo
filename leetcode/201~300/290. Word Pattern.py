@@ -1,6 +1,7 @@
 class Solution:
     def wordPattern(self, pattern: str, str: str) -> bool:
         count_map = {}
+
         listed = str.split()
         if len(pattern) != len(listed):
             return False
