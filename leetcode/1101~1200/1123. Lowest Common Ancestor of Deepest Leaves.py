@@ -7,30 +7,27 @@ class TreeNode:
 
 
 class Solution:
-    deepest_level = 0
-    deepest_nodes = set()
-
-    def calculate_deepest_level(self, node, current_level):
+    def dfs(self, node, level):
         if not node:
-            return
-        new_level = current_level + 1
-        self.deepest_level = max(new_level, self.deepest_level)
-        self.calculate_deepest_level(node.left, new_level)
-        self.calculate_deepest_level(node.right, new_level)
+            return None, level
+        left = right = node
+        l_depth = r_depth = level
+        if node.left:
+            left, l_depth = self.dfs(node.left, level + 1)
+        if node.right:
+            right, r_depth = self.dfs(node.right, level + 1)
 
-    def register_deepest_nodes(self, node, level):
-        if not node:
-            return
-        if level == self.deepest_level:
-            self.deepest_nodes.add(node.val)
-        self.register_deepest_nodes(node.left, level + 1)
-        self.register_deepest_nodes(node.right, level + 1)
+        if l_depth == r_depth:
+            return node, l_depth
+        if l_depth > r_depth:
+            return left, l_depth
+
+        return right, r_depth
 
     def lcaDeepestLeaves(self, root: TreeNode) -> TreeNode:
-        self.calculate_deepest_level(root.left, 0)
-        self.calculate_deepest_level(root.right, 0)
-        self.register_deepest_nodes(root, 0)
-        print(self.deepest_nodes)
+        node = self.dfs(root, 0)
+
+        return node[0]
 
 
 def create_root(arr, root, index, n):
