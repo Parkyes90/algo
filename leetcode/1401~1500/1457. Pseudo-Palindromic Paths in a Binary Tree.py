@@ -7,8 +7,30 @@ class TreeNode:
 
 
 class Solution:
+    cache = set()
+    count = 0
+
+    def dfs(self, node):
+        if not node:
+            return
+        if node.val in self.cache:
+            self.cache.remove(node.val)
+        else:
+            self.cache.add(node.val)
+        if not node.left and not node.right:
+            if len(self.cache) == 1 or len(self.cache) == 0:
+                self.count += 1
+
+        self.dfs(node.left)
+        self.dfs(node.right)
+        if node.val in self.cache:
+            self.cache.remove(node.val)
+        else:
+            self.cache.add(node.val)
+
     def pseudoPalindromicPaths(self, root: TreeNode) -> int:
-        pass
+        self.dfs(root)
+        return self.count
 
 
 def create_root(arr, root, index, n):
