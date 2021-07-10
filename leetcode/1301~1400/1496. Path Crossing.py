@@ -1,11 +1,6 @@
 class Solution:
     def isPathCrossing(self, path: str) -> bool:
-        direction_map = {
-            "N": 1,
-            "E": 1,
-            "S": -1,
-            "W": -1,
-        }
+        direction_map = {"N": 1, "E": 1, "S": -1, "W": -1}
         start = (0, 0)
         visits = {start}
         for p in path:
