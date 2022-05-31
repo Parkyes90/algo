@@ -3,27 +3,15 @@ from typing import List
 
 class OrderedStream:
     def __init__(self, n: int):
-        self.values = []
+        self.values = {}
         self.cur = 1
 
     def insert(self, idKey: int, value: str) -> List[str]:
-        self.values.append((idKey, value))
-
         result = []
-        self.values.sort(key=lambda x: x[0])
-        del_indexes = []
-        for i in range(len(self.values)):
-            key = self.values[i][0]
-            if key == self.cur:
-                self.cur += 1
-                result.append(self.values[i][1])
-                del_indexes.append(i)
-            else:
-                break
-
-        for del_index in del_indexes:
-            self.values[del_index] = None
-        self.values = [v for v in self.values if v is not None]
+        self.values.update({idKey: value})
+        while self.cur in self.values:
+            result.append(self.values[self.cur])
+            self.cur += 1
         return result
 
 
