@@ -3,10 +3,9 @@ from typing import List
 
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
-        result = set(edges[0])
-        for edge in edges:
-            result &= set(edge)
-        return result.pop()
+        if edges[0][0] == edges[1][0] or edges[0][0] == edges[1][1]:
+            return edges[0][0]
+        return edges[0][1]
 
 
 if __name__ == "__main__":
