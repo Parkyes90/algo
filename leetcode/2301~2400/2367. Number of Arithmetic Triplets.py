@@ -4,11 +4,13 @@ from typing import List
 class Solution:
     def arithmeticTriplets(self, nums: List[int], diff: int) -> int:
         count = 0
-        for i in range(len(nums)):
-            for j in range(i + 1, len(nums)):
-                for k in range(j + 1, len(nums)):
-                    if nums[j] - nums[i] == diff and nums[k] - nums[j] == diff:
-                        count += 1
+        num_set = set(nums)
+        for num in nums:
+            remaining = num - diff
+            next_to_find = num + diff
+
+            if remaining in num_set and next_to_find in nums:
+                count += 1
         return count
 
 
