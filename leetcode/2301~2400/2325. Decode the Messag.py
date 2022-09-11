@@ -1,5 +1,6 @@
 from collections import OrderedDict
 
+
 class Solution:
     def decodeMessage(self, key: str, message: str) -> str:
         key_map = OrderedDict()
@@ -9,7 +10,7 @@ class Solution:
                 continue
             key_map[letter] = chr(start)
             start += 1
-            
+
         output = ""
         for letter in message:
             if letter == " ":
