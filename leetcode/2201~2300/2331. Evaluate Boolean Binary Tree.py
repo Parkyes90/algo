@@ -35,7 +35,22 @@ class TreeNode:
 
 class Solution:
     def evaluateTree(self, root: Optional[TreeNode]) -> bool:
-        pass
+        left = None
+        right = None
+
+        if root.left:
+            left = self.evaluateTree(root.left)
+        if root.right:
+            right = self.evaluateTree(root.right)
+
+        if root.val == 0:
+            return False
+        if root.val == 1:
+            return True
+
+        if root.val == 2:
+            return left or right
+        return left and right
 
 
 if __name__ == "__main__":
@@ -44,3 +59,8 @@ if __name__ == "__main__":
     TreeNode.recursive_print(tree_node)
     answer = s.evaluateTree(tree_node)
     assert answer is True
+
+    tree_node = TreeNode.from_list([0])
+    TreeNode.recursive_print(tree_node)
+    answer = s.evaluateTree(tree_node)
+    assert answer is False
