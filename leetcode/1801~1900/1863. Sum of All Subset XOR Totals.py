@@ -18,7 +18,7 @@ class Solution:
 
 if __name__ == "__main__":
     s = Solution()
-    answer = s.subsetXORSum([1,3])
+    answer = s.subsetXORSum([1, 3])
     assert answer == 6
 
     answer = s.subsetXORSum([5, 1, 6])
