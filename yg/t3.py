@@ -6,7 +6,7 @@ def remove_by_index(start_s: str, s: str, start_index: int):
     remove_set = {"AB", "BA", "CD", "DC"}
     removed_s = start_s
     for i in range(start_index, len(s), 2):
-        target = s[i : i + 2]
+        target = s[i: i + 2]
         if target not in remove_set:
             removed_s += target
         else:
@@ -24,7 +24,7 @@ def remove(s: str):
     return removed_s, is_remove_available
 
 
-def solution(s: str):
+def solution2(s: str):
     if len(s) < 2:
         return s
 
@@ -32,6 +32,17 @@ def solution(s: str):
     while is_remove_available and len(removed_s) > 1:
         removed_s, is_remove_available = remove(removed_s)
     return removed_s
+
+
+def solution(s: str):
+    stack = []
+    remove_set = {"AB", "BA", "CD", "DC"}
+    for item in s:
+        if not stack or stack[-1] + item not in remove_set:
+            stack.append(item)
+        else:
+            stack.pop(-1)
+    return "".join(stack)
 
 
 if __name__ == "__main__":
