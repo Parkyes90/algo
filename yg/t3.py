@@ -1,6 +1,3 @@
-import random
-
-
 def remove_by_index(start_s: str, s: str, start_index: int):
     is_remove_available = False
     remove_set = {"AB", "BA", "CD", "DC"}
@@ -24,7 +21,7 @@ def remove(s: str):
     return removed_s, is_remove_available
 
 
-def solution2(s: str):
+def solution(s: str):
     if len(s) < 2:
         return s
 
@@ -34,7 +31,7 @@ def solution2(s: str):
     return removed_s
 
 
-def solution(s: str):
+def solution2(s: str):
     stack = []
     remove_set = {"AB", "BA", "CD", "DC"}
     for item in s:
@@ -56,6 +53,5 @@ if __name__ == "__main__":
     assert solution("AC") == "AC"
     assert solution("CA") == "CA"
     assert solution("ABCD") == ""
-    test_case = "".join(random.choices("ABCD", k=250000))
-    print(solution(test_case))
-    print(len(solution(test_case)))
+    solution("ABCD" * (250000 // 4))
+    assert solution("ADBCB" * (250000 // 4)) == solution2("ADBCB" * (250000 // 4))
