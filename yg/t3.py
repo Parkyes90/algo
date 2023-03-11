@@ -1,3 +1,18 @@
+import random
+import time
+
+
+def timeit(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Function {func.__name__} took {end_time - start_time:.6f} seconds")
+        return result
+
+    return wrapper
+
+
 def remove_by_index(start_s: str, s: str, start_index: int):
     is_remove_available = False
     remove_set = {"AB", "BA", "CD", "DC"}
@@ -21,6 +36,7 @@ def remove(s: str):
     return removed_s, is_remove_available
 
 
+@timeit
 def solution(s: str):
     if len(s) < 2:
         return s
@@ -31,6 +47,7 @@ def solution(s: str):
     return removed_s
 
 
+@timeit
 def solution2(s: str):
     stack = []
     remove_set = {"AB", "BA", "CD", "DC"}
@@ -55,3 +72,5 @@ if __name__ == "__main__":
     assert solution("ABCD") == ""
     solution("ABCD" * (250000 // 4))
     assert solution("ADBCB" * (250000 // 4)) == solution2("ADBCB" * (250000 // 4))
+    test_case = "".join(random.choice("ABCD") for _ in range(250000))
+    assert solution(test_case) == solution2(test_case)
