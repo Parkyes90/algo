@@ -74,3 +74,4 @@ if __name__ == "__main__":
     assert solution("ADBCB" * (250000 // 4)) == solution2("ADBCB" * (250000 // 4))
     test_case = "".join(random.choice("ABCD") for _ in range(250000))
     assert solution(test_case) == solution2(test_case)
+    solution2("A" * 125000 + "B" * 125000)
