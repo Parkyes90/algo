@@ -18,7 +18,7 @@ def remove_by_index(start_s: str, s: str, start_index: int):
     remove_set = {"AB", "BA", "CD", "DC"}
     removed_s = start_s
     for i in range(start_index, len(s), 2):
-        target = s[i: i + 2]
+        target = s[i : i + 2]
         if target not in remove_set:
             removed_s += target
         else:
