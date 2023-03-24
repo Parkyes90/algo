@@ -5,7 +5,6 @@ class Solution:
     def maximumValue(self, strs: List[str]) -> int:
         output = 0
         for letters in strs:
-            print(letters)
             if letters.isdigit():
                 output = max(int(letters), output)
             else:
