@@ -1,3 +1,4 @@
+from collections import Counter
 from typing import List
 
 
@@ -12,7 +13,21 @@ class Solution:
 
         return count
 
+    def unequalTriplets2(self, nums: List[int]) -> int:
+
+        counter = Counter(nums)
+        ret = 0
+
+        left = 0
+        right = len(nums)
+
+        for freq in counter.values():
+            right -= freq
+            ret += left * right * freq
+            left += freq
+        return ret
+
 
 if __name__ == "__main__":
-    assert Solution().unequalTriplets([4, 4, 2, 4, 3]) == 3
-    assert Solution().unequalTriplets([1, 1, 1, 1, 1]) == 0
+    assert Solution().unequalTriplets2([4, 4, 2, 4, 3]) == 3
+    assert Solution().unequalTriplets2([1, 1, 1, 1, 1]) == 0
