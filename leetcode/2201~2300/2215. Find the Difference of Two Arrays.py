@@ -11,6 +11,6 @@ class Solution:
         return answer
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     assert Solution().findDifference([1, 2, 3], [2, 4, 6]) == [[1, 3], [4, 6]]
     assert Solution().findDifference([1, 2, 3, 3], [1, 1, 2, 2]) == [[3], []]

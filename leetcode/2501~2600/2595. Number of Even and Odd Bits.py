@@ -2,7 +2,6 @@ from typing import List
 
 
 class Solution:
-
     def to_binary(self, n: int):
         bits = []
         while n > 0:
